@@ -38,8 +38,9 @@ p {
 	opacity: 0.6;
 }
 .container {
-	width: 1110px;
+	max-width: 1110px;
 	margin: 0 auto;
+	padding: 0 10px;
 }
 .accent {
 	color: #ab5cdb;
@@ -49,8 +50,7 @@ p {
 	border-radius: 8px;
 	min-height: 446px;
 	margin: 100px 0;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
 	overflow: hidden;
 }
 .info {
@@ -60,9 +60,22 @@ p {
 	display: flex;
 	justify-content: space-between;
 }
+.info-list__item {
+	text-align: center;
+}
+.info-img {
+	width: auto;
+	mix-blend-mode: multiply;
+	/* TODO - position-absolut fix-hight 240px for mobile device */
+}
+/* BUG - Проблеми з зображенням */
+/* FIXME - Додаткові оступи на моб орієнтації */
 .img-wrapper {
 	position: relative;
-	width: 100%;
+	width: auto;
+	height: 100%;
+	display: flex;
+	justify-content: center;
 }
 .img-wrapper::before {
 	content: '';
@@ -75,11 +88,45 @@ p {
 	left: 0;
 	opacity: 0.75;
 }
-.img-wrapper img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	mix-blend-mode: multiply;
+/* 	MEDIA */
+@media (max-width: 1200px) {
+	/* // rules here apply to devices from 993px to 1200px (inclusive) */
+}
+@media (max-width: 992px) {
+	/* // rules here apply to devices from 769px to 992px (inclusive) */
+	.field {
+		flex-direction: column;
+	}
+	.container {
+		max-width: 100%;
+		padding: 0 20px;
+	}
+}
+@media (max-width: 768px) {
+	/* // rules here apply to devices from 769px to 992px (inclusive) */
+	h1 {
+		font-size: 28px;
+	}
+	h2 {
+		font-size: 24px;
+	}
+
+	.field {
+		flex-direction: column-reverse;
+	}
+	.info {
+		padding: 32px;
+	}
+	.info-list {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 16px;
+		gap: 24px 0px;
+	}
+}
+
+@media (max-width: 512px) {
+	/* // rules here apply to devices from 0px to 768px (inclusive) */
 }
 
